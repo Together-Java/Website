@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "com.google.cloud.tools.jib" version "3.3.0"
+    id 'java'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(19)
+    }
+}
+
+var outputImage = 'togetherjava.org:5001/togetherjava/website:' + System.getenv('BRANCH_NAME') ?: 'latest'
+
+jib {
+    from.image = 'eclipse-temurin:19'
+    to {
+        image = outputImage
+        auth {
+            username = System.getenv('ORG_REGISTRY_USER') ?: ''
+            password = System.getenv('ORG_REGISTRY_PASSWORD') ?: ''
+        }
+    }
+    container {
+        mainClass = 'org.togetherjava.website.Application'
+        setCreationTime(Instant.now().toString())
+    }
+}
