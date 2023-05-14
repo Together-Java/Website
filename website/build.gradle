@@ -27,7 +27,6 @@ jib {
         }
     }
     container {
-        mainClass = 'org.togetherjava.website.Application'
         setCreationTime(Instant.now().toString())
     }
 }
