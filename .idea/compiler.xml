@@ -3,4 +3,11 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="19" />
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Website.website" options="-parameters" />
+      <module name="Website.website.main" options="-parameters" />
+      <module name="Website.website.test" options="-parameters" />
+    </option>
+  </component>
 </project>
