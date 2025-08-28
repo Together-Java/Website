@@ -1,4 +1,4 @@
 /**
  * Main package for the projects' website.
  */
-package org.togetherjava.tjbot.website;
+package org.togetherjava.website;
